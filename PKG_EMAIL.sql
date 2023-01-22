@@ -29,7 +29,7 @@ BEGIN
 	--UTL_SMTP.rcpt(l_mail_conn, p_to);
 
 	UTL_SMTP.open_data(l_mail_conn);
-  
+
 	UTL_SMTP.write_data(l_mail_conn, 'Date: ' || TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI:SS') || UTL_TCP.crlf);
 	UTL_SMTP.write_data(l_mail_conn, 'To: ' || p_to || UTL_TCP.crlf);
 	UTL_SMTP.write_data(l_mail_conn, 'From: ' || p_from || UTL_TCP.crlf);
