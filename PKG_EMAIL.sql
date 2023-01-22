@@ -2,7 +2,7 @@ CREATE OR REPLACE PACKAGE BODY DBADMINDATA.PKG_EMAIL
 AS
 
 PROCEDURE SEND_MAIL(p_to			IN VARCHAR2,
-					p_from			IN VARCHAR2, 
+					p_from			IN VARCHAR2,
 					p_subject		IN VARCHAR2,
 					p_msg			IN clob,
 					p_charset		IN varchar2 DEFAULT vcharset,
@@ -15,7 +15,7 @@ IS
 	l_boundary		VARCHAR2(50) := '----=*#abc1234321cba#*=';
 	L_OFFSET		NUMBER;
 	L_AMMOUNT		NUMBER;
-  	l_step			PLS_INTEGER  := 57;
+	l_step			PLS_INTEGER := 57;
 BEGIN
 	l_mail_conn := UTL_SMTP.open_connection(p_smtp_host, p_smtp_port);
 	UTL_SMTP.helo(l_mail_conn, p_smtp_host);
