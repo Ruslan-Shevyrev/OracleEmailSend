@@ -4,7 +4,7 @@ AS
 PROCEDURE SEND_MAIL(p_to			IN VARCHAR2,
 					p_from			IN VARCHAR2, 
 					p_subject		IN VARCHAR2,
-					p_msg  			IN clob, --chr(10)||chr(13) OR UTL_TCP.crlf EVERY 1000 char
+					p_msg			IN clob, --chr(10)||chr(13) OR UTL_TCP.crlf EVERY 1000 char
 					p_charset		IN varchar2 DEFAULT vcharset,
 					p_content_type	IN VARCHAR2 DEFAULT vcontent_type,
 					p_smtp_host 	IN VARCHAR2 DEFAULT vsmtp_host,
