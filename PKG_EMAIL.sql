@@ -21,12 +21,13 @@ BEGIN
 	UTL_SMTP.helo(l_mail_conn, p_smtp_host);
 	UTL_SMTP.mail(l_mail_conn, p_from);
  
-	FOR x IN (SELECT LEVEL AS id, REGEXP_SUBSTR(p_to, '[^,]+', 1, LEVEL) AS TO_EMAIL_NAME FROM DUAL
-				CONNECT BY REGEXP_SUBSTR(p_to, '[^,]+', 1, LEVEL) IS NOT NULL) LOOP
+	FOR x IN (SELECT LEVEL AS id, 
+						REGEXP_SUBSTR(p_to, '[^,]+', 1, LEVEL) AS TO_EMAIL_NAME
+				FROM DUAL
+				CONNECT BY REGEXP_SUBSTR(p_to, '[^,]+', 1, LEVEL) IS NOT NULL)
+	LOOP
 		utl_smtp.Rcpt(l_mail_conn,x.TO_EMAIL_NAME);
 	END LOOP;
-
-	--UTL_SMTP.rcpt(l_mail_conn, p_to);
 
 	UTL_SMTP.open_data(l_mail_conn);
 
