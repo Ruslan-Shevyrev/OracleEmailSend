@@ -20,7 +20,7 @@ BEGIN
 	l_mail_conn := UTL_SMTP.open_connection(p_smtp_host, p_smtp_port);
 	UTL_SMTP.helo(l_mail_conn, p_smtp_host);
 	UTL_SMTP.mail(l_mail_conn, p_from);
-
+ 
 	FOR x IN (SELECT LEVEL AS id, REGEXP_SUBSTR(p_to, '[^,]+', 1, LEVEL) AS TO_EMAIL_NAME FROM DUAL
 				CONNECT BY REGEXP_SUBSTR(p_to, '[^,]+', 1, LEVEL) IS NOT NULL) LOOP
 		utl_smtp.Rcpt(l_mail_conn,x.TO_EMAIL_NAME);
@@ -54,11 +54,11 @@ BEGIN
 			L_AMMOUNT := LEAST(L_AMMOUNT,DBMS_LOB.GETLENGTH(p_msg) - L_AMMOUNT);
 		END LOOP;
 		UTL_SMTP.write_data(l_mail_conn, UTL_TCP.crlf || UTL_TCP.crlf);
-  	END IF;
+	END IF;
 
 	IF p_attach IS NOT NULL THEN
-	    FOR i IN p_attach.FIRST .. p_attach.LAST
-	    LOOP
+		FOR i IN p_attach.FIRST .. p_attach.LAST
+		LOOP
 		    
 			UTL_SMTP.write_data(l_mail_conn, '--' || l_boundary || UTL_TCP.crlf);
 			UTL_SMTP.write_data(l_mail_conn, 'Content-Type: ' || p_attach(i).data_type || '; name="' || p_attach(i).attach_name || '"' || UTL_TCP.crlf);
