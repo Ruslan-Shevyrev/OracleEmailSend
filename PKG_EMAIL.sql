@@ -38,8 +38,8 @@ BEGIN
 	UTL_SMTP.write_data(l_mail_conn, 'Reply-To: ' || p_from || UTL_TCP.crlf);
 	UTL_SMTP.write_data(l_mail_conn, 'MIME-Version: 1.0' || UTL_TCP.crlf);
 	UTL_SMTP.write_data(l_mail_conn, 'Content-Type: multipart/alternative; boundary="' || l_boundary || '"' || UTL_TCP.crlf || UTL_TCP.crlf);
-  
-    UTL_SMTP.write_data(l_mail_conn, '--' || l_boundary || UTL_TCP.crlf);
+
+	UTL_SMTP.write_data(l_mail_conn, '--' || l_boundary || UTL_TCP.crlf);
     UTL_SMTP.write_data(l_mail_conn, 'Content-Type: '||p_content_type||'; charset="'||p_charset||'"' || UTL_TCP.crlf || UTL_TCP.crlf);
 	
 	L_OFFSET  := 1;
