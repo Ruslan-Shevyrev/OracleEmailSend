@@ -67,7 +67,7 @@ BEGIN
 
 			FOR j IN 0 .. TRUNC((DBMS_LOB.getlength(p_attach(i).attach_content) - 1 )/l_step) LOOP
 				UTL_SMTP.write_data(l_mail_conn, UTL_RAW.cast_to_varchar2(UTL_ENCODE.base64_encode(DBMS_LOB.substr(p_attach(i).attach_content, l_step, j * l_step + 1))) || UTL_TCP.crlf);
-    		END LOOP;
+			END LOOP;
 		    NULL;
 	    END LOOP;
 	END IF;
