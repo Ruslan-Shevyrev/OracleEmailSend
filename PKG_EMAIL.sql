@@ -40,12 +40,12 @@ BEGIN
 	UTL_SMTP.write_data(l_mail_conn, 'Content-Type: multipart/alternative; boundary="' || l_boundary || '"' || UTL_TCP.crlf || UTL_TCP.crlf);
 
 	UTL_SMTP.write_data(l_mail_conn, '--' || l_boundary || UTL_TCP.crlf);
-    UTL_SMTP.write_data(l_mail_conn, 'Content-Type: '||p_content_type||'; charset="'||p_charset||'"' || UTL_TCP.crlf || UTL_TCP.crlf);
+	UTL_SMTP.write_data(l_mail_conn, 'Content-Type: '||p_content_type||'; charset="'||p_charset||'"' || UTL_TCP.crlf || UTL_TCP.crlf);
 	
 	L_OFFSET  := 1;
 	L_AMMOUNT := 4000;
 
-   	IF p_msg IS NOT NULL THEN
+	IF p_msg IS NOT NULL THEN
 		WHILE L_OFFSET < DBMS_LOB.GETLENGTH(p_msg)
 		LOOP
 			--UTL_SMTP.WRITE_DATA(l_mail_conn, DBMS_LOB.SUBSTR(p_msg,L_AMMOUNT,L_OFFSET));
@@ -64,9 +64,9 @@ BEGIN
 			UTL_SMTP.write_data(l_mail_conn, 'Content-Type: ' || p_attach(i).data_type || '; name="' || p_attach(i).attach_name || '"' || UTL_TCP.crlf);
 			UTL_SMTP.write_data(l_mail_conn, 'Content-Transfer-Encoding: base64' || UTL_TCP.crlf);
 			UTL_SMTP.write_data(l_mail_conn, 'Content-Disposition: attachment; filename="' || p_attach(i).attach_name || '"' || UTL_TCP.crlf || UTL_TCP.crlf);
-			
+
 			FOR j IN 0 .. TRUNC((DBMS_LOB.getlength(p_attach(i).attach_content) - 1 )/l_step) LOOP
-      			UTL_SMTP.write_data(l_mail_conn, UTL_RAW.cast_to_varchar2(UTL_ENCODE.base64_encode(DBMS_LOB.substr(p_attach(i).attach_content, l_step, j * l_step + 1))) || UTL_TCP.crlf);
+				UTL_SMTP.write_data(l_mail_conn, UTL_RAW.cast_to_varchar2(UTL_ENCODE.base64_encode(DBMS_LOB.substr(p_attach(i).attach_content, l_step, j * l_step + 1))) || UTL_TCP.crlf);
     		END LOOP;
 		    NULL;
 	    END LOOP;
