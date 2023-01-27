@@ -9,7 +9,7 @@ nsmtp_port		NUMBER:=25;
 TYPE attach_info IS RECORD (attach_name     VARCHAR2(40),
 							data_type       VARCHAR2(40) DEFAULT 'text/plain',
 							attach_content  BLOB);
-TYPE attachments IS TABLE OF attach_info;  
+TYPE attachments IS TABLE OF attach_info;
 
 PROCEDURE SEND_MAIL(p_to        	IN VARCHAR2,--,
 					p_from      	IN VARCHAR2, 
