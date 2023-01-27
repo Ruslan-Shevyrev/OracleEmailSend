@@ -11,9 +11,6 @@ TYPE attach_info IS RECORD (attach_name     VARCHAR2(40),
 							attach_content  BLOB);
 TYPE attachments IS TABLE OF attach_info;  
 
-/*FUNCTION clob_to_blob(value            	IN CLOB,
-						charset_id      IN INTEGER DEFAULT DBMS_LOB.DEFAULT_CSID) RETURN BLOB;*/
-
 PROCEDURE SEND_MAIL(p_to        	IN VARCHAR2,--,
 					p_from      	IN VARCHAR2, 
 					p_subject   	IN VARCHAR2,
