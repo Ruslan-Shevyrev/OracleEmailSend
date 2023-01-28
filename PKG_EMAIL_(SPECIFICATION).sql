@@ -1,14 +1,14 @@
 CREATE OR REPLACE PACKAGE DBADMINDATA.PKG_EMAIL
 AS
 
-vcharset 		varchar2(100):='utf-8';
+vcharset		varchar2(100):='utf-8';
 vcontent_type	varchar2(100):='text/html'; --text/plain
 vsmtp_host		varchar2(100):='test_host';
 nsmtp_port		NUMBER:=25;
 
-TYPE attach_info IS RECORD (attach_name     VARCHAR2(40),
-							data_type       VARCHAR2(40) DEFAULT 'text/plain',
-							attach_content  BLOB);
+TYPE attach_info IS RECORD (attach_name		VARCHAR2(40),
+							data_type		VARCHAR2(40) DEFAULT 'text/plain',
+							attach_content	BLOB);
 TYPE attachments IS TABLE OF attach_info;
 
 PROCEDURE SEND_MAIL(p_to        	IN VARCHAR2,--,
