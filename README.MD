@@ -14,7 +14,7 @@ PROCEDURE SEND_MAIL(p_to            IN VARCHAR2,
                     p_attach        IN attachments DEFAULT NULL);
 ```
 
-**p_to** - myltiple emails separated by ***comma*** **(,)**\
+**p_to** - myltiple emails separate by ***comma*** **(,)**
 
 **Example:**
 ```
