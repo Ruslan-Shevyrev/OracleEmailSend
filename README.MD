@@ -21,7 +21,8 @@ PROCEDURE SEND_MAIL(p_to            IN VARCHAR2,
 test1@mail.com,test2@mail.com
 ```
 
-:one: :warning: **p_message** You need to make sure that every 1000 characters you add ***chr(10)||chr(13)*** or ***UTL_TCP.crlf***
+:one: :warning: **p_message** - нou need to make sure that every 1000 characters you add ***chr(10)||chr(13)*** or ***UTL_TCP.crlf***\
+It's very important if you use multiple language in your message body.
 
 <table>
 	<tr>
