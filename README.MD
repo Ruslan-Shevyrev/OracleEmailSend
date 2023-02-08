@@ -24,6 +24,8 @@ test1@mail.com,test2@mail.com
 :two: **p_message** - you need to make sure that every 1000 characters you add **chr(10)||chr(13)** or **UTL_TCP.crlf**\
 :warning: It's very important if you use multiple language in your ***message body***.
 
+:three: **p_charset** - default **'utf-8'**
+
 <table>
 	<tr>
 		<td valign="center" width="49%"><img src="https://github.com/Ruslan-Shevyrev/Ruslan-Shevyrev/blob/main/logoRS/logo_mini.gif" title="logo"></td>
