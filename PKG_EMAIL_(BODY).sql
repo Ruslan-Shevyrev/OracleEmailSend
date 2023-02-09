@@ -13,10 +13,10 @@ PROCEDURE SEND_MAIL(p_to			IN VARCHAR2,
 IS
 	l_mail_conn		UTL_SMTP.connection;
 	l_boundary		VARCHAR2(50) := '----=*#abc1234321cba#*=';
-	L_OFFSET		NUMBER;
+	L_OFFSET		NUMBER :=1;
 	L_AMMOUNT		binary_integer :=1024;
 	l_step			PLS_INTEGER := 57;
-	l_buffer		VARCHAR2(32767);
+	l_buffer		VARCHAR2(4000);
 BEGIN
 	l_mail_conn := UTL_SMTP.open_connection(p_smtp_host, p_smtp_port);
 	UTL_SMTP.helo(l_mail_conn, p_smtp_host);
@@ -43,9 +43,6 @@ BEGIN
 	UTL_SMTP.write_data(l_mail_conn, 'Content-Type: '||p_content_type||'; charset="'||p_charset||'"' || UTL_TCP.crlf);
 	UTL_SMTP.write_data(l_mail_conn, 'Content-Transfer-Encoding: quoted-printable' || UTL_TCP.crlf);
 	UTL_SMTP.write_data(l_mail_conn, UTL_TCP.crlf);
-
-	L_OFFSET  := 1;
-	L_AMMOUNT := 1024;
 
 	IF p_msg IS NOT NULL THEN
 		LOOP
