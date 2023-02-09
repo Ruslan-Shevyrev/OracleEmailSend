@@ -16,7 +16,7 @@ IS
 	L_OFFSET		NUMBER;
 	L_AMMOUNT		binary_integer :=1024;
 	l_step			PLS_INTEGER := 57;
-	l_buffer		varchar2(32767);
+	l_buffer		VARCHAR2(32767);
 BEGIN
 	l_mail_conn := UTL_SMTP.open_connection(p_smtp_host, p_smtp_port);
 	UTL_SMTP.helo(l_mail_conn, p_smtp_host);
