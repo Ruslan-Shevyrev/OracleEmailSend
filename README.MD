@@ -26,6 +26,8 @@ test1@mail.com,test2@mail.com
 
 :three: **p_charset** - default **'utf-8'**
 
+:four: **p_content_type** - default **'text/html'**
+
 <table>
 	<tr>
 		<td valign="center" width="49%"><img src="https://github.com/Ruslan-Shevyrev/Ruslan-Shevyrev/blob/main/logoRS/logo_mini.gif" title="logo"></td>
