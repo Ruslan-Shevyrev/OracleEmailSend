@@ -28,6 +28,8 @@ test1@mail.com,test2@mail.com
 
 :four: **p_content_type** - default **'text/html'**
 
+:five: **p_attach** - Nested Table:
+
 <table>
 	<tr>
 		<td valign="center" width="49%"><img src="https://github.com/Ruslan-Shevyrev/Ruslan-Shevyrev/blob/main/logoRS/logo_mini.gif" title="logo"></td>
