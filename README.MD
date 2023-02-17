@@ -30,6 +30,12 @@ test1@mail.com,test2@mail.com
 
 :five: **p_attach** - Nested Table:
 
+```
+TYPE attach_info IS RECORD (attach_name     VARCHAR2(40),
+                            data_type       VARCHAR2(40) DEFAULT 'text/plain',
+                            attach_content  BLOB);
+```
+
 <table>
 	<tr>
 		<td valign="center" width="49%"><img src="https://github.com/Ruslan-Shevyrev/Ruslan-Shevyrev/blob/main/logoRS/logo_mini.gif" title="logo"></td>
