@@ -36,6 +36,26 @@ TYPE attach_info IS RECORD (attach_name     VARCHAR2(40),
                             attach_content  BLOB);
 ```
 
+**Example:**
+```
+DECLARE
+    attachments PKG_EMAIL.attachments:=PKG_EMAIL.attachments();
+BEGIN
+    attachments.extend(1);
+    attachments(attachments.LAST).attach_name:='Test1.txt';
+    attachments(attachments.LAST).attach_content:=PKG_TOOL.clob2blob('Test Message 1');
+    attachments.extend(1);
+    attachments(attachments.LAST).attach_name:='Test2.txt';
+    attachments(attachments.LAST).attach_content:=PKG_TOOL.clob2blob('Test Message 2');
+
+    DBADMINDATA.PKG_EMAIL.SEND_MAIL(p_to        =>'test_to@test.com',
+                                    p_from      =>'test_from@test.com',
+                                    p_subject   =>'test',
+                                    p_msg       =>'test',
+                                    p_attach    =>attachments);
+END;
+```
+
 <table>
 	<tr>
 		<td valign="center" width="49%"><img src="https://github.com/Ruslan-Shevyrev/Ruslan-Shevyrev/blob/main/logoRS/logo_mini.gif" title="logo"></td>
