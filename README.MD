@@ -43,10 +43,10 @@ DECLARE
 BEGIN
     attachments.extend(1);
     attachments(attachments.LAST).attach_name:='Test1.txt';
-    attachments(attachments.LAST).attach_content:=PKG_TOOL.clob2blob('Test Message 1');
+    attachments(attachments.LAST).attach_content:=/*PKG_TOOL.clob2blob('Test Message 1'); -- convert to clob to blob*/
     attachments.extend(1);
     attachments(attachments.LAST).attach_name:='Test2.txt';
-    attachments(attachments.LAST).attach_content:=PKG_TOOL.clob2blob('Test Message 2');
+    attachments(attachments.LAST).attach_content:=/*PKG_TOOL.clob2blob('Test Message 2'); -- convert to clob to blob*/ 
 
     DBADMINDATA.PKG_EMAIL.SEND_MAIL(p_to        =>'test_to@test.com',
                                     p_from      =>'test_from@test.com',
