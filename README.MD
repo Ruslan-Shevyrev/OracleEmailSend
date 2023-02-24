@@ -1,4 +1,4 @@
-# OracleEmailSend
+# Send-Email-CLOB
 
 Sending an email with the **CLOB** Message Body.
 
